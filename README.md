@@ -1,25 +1,38 @@
-# Laboratorio de IaC e IA
+# Laboratorio de IaC e IA · empieza aquí
 
-Proyecto ficticio `portal-demo` para practicar Infraestructura como Código. El código registra un nombre y un entorno mediante `terraform_data`, un recurso integrado en OpenTofu. El workflow calcula un plan y muestra lo que se registraría. No aplica cambios ni crea infraestructura en la nube.
+Un solo proyecto ficticio, `portal-demo`, que ampliarás durante el curso. Este repositorio contiene el **punto de partida**: cada participante crea **una copia propia una sola vez** y continúa los ejercicios en esa misma copia. Las soluciones de la docente están en ramas separadas; no las necesitas para trabajar.
 
-## Primera práctica desde el navegador
+## Empieza por el ejercicio 1
 
-1. En tu copia del repositorio, cambia `github.com` por `github.dev` en la URL. Puede abrirse en `vscode.dev`. Abre `variables.tf`.
-2. Lee `default = "desarrollo"` y predice qué mostrará el plan. Cambia el valor a `pruebas` y guarda con `Ctrl+S`.
-3. Abre Control de código fuente, escribe el mensaje `Ejercicio 1: cambiar entorno a pruebas` y confirma el cambio con **Commit & Push**. Si el editor presenta los pasos por separado, confirma primero y después publica o sincroniza los cambios.
-4. En la página de tu repositorio en `github.com`, entra en **Actions** y abre la ejecución de **Validacion IaC** correspondiente a tu commit. Abre el trabajo **comprobar** y consulta las etapas Inicializar, Comprobar formato, Validar y Mostrar plan.
-5. En el plan, busca `terraform_data.aplicacion`, `entorno = "pruebas"` y `Plan: 1 to add, 0 to change, 0 to destroy`. En cada ejecución se usa un runner nuevo, así que no conserva el estado de ejecuciones anteriores.
+**[Abrir el ejercicio 1: primera configuración y primera comprobación](EJERCICIO_1.md)**
 
-Si no tienes GitHub Copilot disponible, pega el código ficticio en ChatGPT Free y solicita que identifique variable, recurso y salida. Comprueba las afirmaciones mirando los archivos y el resultado del workflow.
+Si estás en `github.com/b-regina/iac-ia-laboratorio-demo`, pulsa **Use this template → Create a new repository** y crea la copia bajo tu usuario. Comprueba que la nueva dirección comienza por `github.com/TU_USUARIO/`. Trabaja siempre en esa copia. La ruta principal usa solo el navegador: GitHub.com para crear la copia y ver los resultados, y `github.dev` para editar. **No hace falta clonar ni instalar OpenTofu, Git o VS Code** para seguir la ruta principal.
 
-Si el editor de `github.dev` pide una autorización que tu cuenta o navegador no permite, puedes hacer el mismo cambio desde `github.com`: abre `variables.tf`, pulsa **Edit this file** (icono del lápiz), modifica el valor y elige **Commit changes**. Después consulta **Actions** como en el paso 4.
+Después de crear la copia, entra en su pestaña **Actions**. El workflow `Validacion IaC` puede ejecutarse ya con el commit inicial; confirma que el trabajo `comprobar` termina en verde. Si tu cuenta exige habilitar Actions o el navegador bloquea el editor, el [ejercicio 1](EJERCICIO_1.md) explica qué hacer. Un commit nuevo activará otra ejecución. OpenTofu se instala **en el ejecutor temporal de GitHub**, no en tu equipo.
 
-Para volver a intentarlo, modifica solo el valor de `entorno`, guarda y confirma un nuevo commit. La guía del ejercicio explica los puntos de control, las incidencias y las preguntas finales.
+## Tu recorrido: un ejercicio después del anterior
 
-## Continuidad del laboratorio
+| Orden | Guía | Qué añadirás a tu misma copia |
+| --- | --- | --- |
+| 1 | [Primera configuración y comprobación](EJERCICIO_1.md) | Cambiar el entorno, publicar el cambio y leer un plan. |
+| 2 | [Dos escenarios](EJERCICIO_2.md) | Variables y un archivo de valores para integración. |
+| 3 | [Revisión y gobierno](EJERCICIO_3.md) | Reglas de validación, rama y pull request. |
+| 4 | [Automatización y evidencias](EJERCICIO_4.md) | Mejorar el workflow y diagnosticar un fallo. |
+| 5 | [Módulo reutilizable](EJERCICIO_5.md) | Crear `modulo_ficha/` y usarlo dos veces. |
+| 6 | [Política del plan](EJERCICIO_6.md) | Comprobar reglas sobre dos planes ficticios. |
+| 7 | [Catálogo de fichas](EJERCICIO_7.md) | Reutilizar el módulo con `for_each`. |
+| 8 | [Taller final](EJERCICIO_8.md) | Etiquetas didácticas y responsables por entorno. |
+| 9 | [Promoción controlada](EJERCICIO_9.md) | Ampliación de práctica si el ritmo de clase lo permite. |
 
-Después de terminar la primera práctica en tu **copia personal**, continúa con [Ejercicio 2. Una configuración para dos escenarios](EJERCICIO_2.md). No crees otro repositorio: usarás tus propios commits y los mismos archivos para aprender variables, parámetros y Git. La rama `main` de esta plantilla conserva el punto de partida del ejercicio 1.
+**Importante:** que veas las nueve guías no significa que los nueve ejercicios estén resueltos. El código de `main` comienza en el ejercicio 1. Sigue la guía que corresponde a tu avance; las carpetas y archivos de los ejercicios posteriores aparecerán cuando tú los crees.
 
-Después de terminar el ejercicio 2 en **tu misma copia**, sigue con [Ejercicio 3. Revisar y gobernar un cambio de IaC](EJERCICIO_3.md). Trabajarás en una rama propia, comprobarás una regla de validación y revisarás un pull request antes de fusionarlo.
+## Qué hay al comenzar
 
-Cuando termines el ejercicio 3 y hayas fusionado su cambio en **tu propia `main`**, continúa con [Ejercicio 4. Una automatización que explica sus resultados](EJERCICIO_4.md). Ampliarás el workflow del mismo proyecto, comprobarás un fallo de ruta y guardarás un resumen y un artefacto de evidencia.
+| Archivo | Para qué sirve |
+| --- | --- |
+| `variables.tf` | Declara el entorno, inicialmente `desarrollo`. |
+| `main.tf` | Describe una ficha ficticia con `terraform_data`. |
+| `outputs.tf` | Explica el resultado que mostraría OpenTofu. |
+| `.github/workflows/validacion.yml` | Instala OpenTofu y ejecuta `init`, `fmt`, `validate` y `plan` en GitHub Actions. |
+
+`terraform_data` no crea una web ni un servidor. El workflow calcula planes; **no ejecuta `tofu apply`**, no pide credenciales cloud ni genera infraestructura comercial. Usa únicamente nombres y datos inventados. Si tienes VS Code local autorizado, puedes editar **la misma copia personal** desde allí y publicar los commits; Actions seguirá siendo la comprobación común.
