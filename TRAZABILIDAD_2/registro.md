@@ -44,3 +44,17 @@
 - `git diff --check` y `git diff --cached --check` no detectaron errores.
 - El índice contiene exclusivamente `main.tf` y `variables.tf`; `TRAZABILIDAD_2/` permanece sin preparar.
 - No se hizo commit ni push.
+
+## 2026-11-17 — Parte B
+
+- Se confirmó que `escenario-integracion.tfvars` todavía no existía, que `variables.tf` ya declara `entorno` y `nombre_aplicacion`, y que `.gitignore` permite este archivo.
+- Se añadió `escenario-integracion.tfvars` con `entorno = "integracion"` y `nombre_aplicacion = "portal-interno"`.
+- En `.github/workflows/validacion.yml`, se conservó `Inicializar`, `Comprobar formato` y `Validar`, y se reemplazó el paso único de plan por los planes por defecto e integración con `-var-file=escenario-integracion.tfvars`.
+- No se modificaron otros archivos del proyecto, no se ejecutó OpenTofu, no se hizo commit ni push.
+
+## 2026-11-17 — Revisión previa al commit de la parte B
+
+- Se confirmó la rama `ejercicio-2-amos-solucion`, `origin` en `git@github.com:amosnava/iac-ia-lab-formacion.git` y que `git diff --check` no detecta errores.
+- Antes de preparar, los cambios eran `.github/workflows/validacion.yml`, `escenario-integracion.tfvars` y este registro; no había archivos preparados.
+- Se preparan esos tres archivos para revisión del commit de la parte B.
+- No se hizo commit ni push.
