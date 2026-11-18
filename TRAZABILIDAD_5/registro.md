@@ -30,5 +30,8 @@
 ## 2026-11-18 — Ensayo controlado: falta nombre en ayuda
 
 - Se quitó temporalmente `nombre = "portal-ayuda"` de la llamada raíz `module.ayuda`, manteniendo su `source` y `entorno`.
-- Se espera que `Validar` falle por el argumento obligatorio `nombre` ausente; los dos pasos de plan deberían omitirse, mientras que resumen y publicación de evidencia se intentan por `always()`.
-- Este fallo es deliberado y no debe permanecer en la solución final. La ejecución remota y su log se registrarán después de publicar el commit de prueba.
+- Se publicó `Prueba: falta nombre en módulo ayuda` (`b6812242da935e321425cbedef6506f1ad97ee6f`).
+- La ejecución [44296646999](https://github.com/amosnava/iac-ia-lab-formacion/actions/runs/44296646999) terminó en `failure`: `Inicializar` y `Comprobar formato` tuvieron éxito; `Validar` falló; ambos planes se omitieron; resumen y publicación de evidencia terminaron en éxito.
+- El artefacto `evidencia-iac-44296646999-1` se publicó y expira el 25-11-2026.
+- Las anotaciones disponibles indican `OpenTofu exited with code 1`; la API de GitHub denegó el log completo con 403, así que no se pudo observar el texto detallado del error. El argumento ausente es la causa prevista por el cambio controlado, no una cita literal del log.
+- El fallo fue deliberado y no debe permanecer en la solución final; se restauró `nombre = "portal-ayuda"` en `module.ayuda`.
