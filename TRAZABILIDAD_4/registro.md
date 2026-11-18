@@ -22,4 +22,11 @@
 - Se confirmó localmente el commit `19930a0532c4bd810227530c7ddffad78a39871c` con los siete archivos revisados.
 - Se publicó `integrar-ejercicio-3` en `origin`; GitHub devolvió el enlace para abrir el PR hacia `main`.
 - No se creó el PR desde este entorno: no hay herramienta GitHub para crear PR disponible y `gh` CLI no está instalado.
-- La integración queda pendiente de que se abra y revise el PR y de que los prerrequisitos lleguen a `main`.
+- Posteriormente, el usuario abrió y fusionó el PR #1. El commit de fusión `c91516bcf60eba107d3d0511fba4bfd4951fb642` en `origin/main` contiene los prerrequisitos.
+
+## 2026-11-18 — Implementación inicial del ejercicio 4
+
+- Se actualizó `origin/main` y se confirmó que el PR #1 estaba fusionado y que `main` tenía el workflow con dos planes y las validaciones del ejercicio 3.
+- Se creó `ejercicio-4-amos-solucion` desde `origin/main`.
+- En `.github/workflows/validacion.yml`, se añadieron IDs a formato, validación y ambos planes; se añadió el resumen con `if: always()` y la publicación de `evidencia.txt` como artefacto con retención de siete días.
+- No se modificaron otros archivos del proyecto, no se ejecutó OpenTofu, no se hizo `apply` o `destroy`, y no se hizo commit ni push.
