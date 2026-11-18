@@ -47,3 +47,10 @@
 - Se confirmó `Ejercicio 5: documentar arquitectura` (`1e21d7d99483b3fe65acc20488d7d539715a071b`) con `README.md` y esta actualización de trazabilidad en un commit separado.
 - La ejecución [44296968655](https://github.com/amosnava/iac-ia-lab-formacion/actions/runs/44296968655) terminó en `success` y verificó formato, validación, ambos planes, resumen y artefacto.
 - El ensayo temporal se corrigió antes del estado final publicado; el README describe la arquitectura ficticia y sus límites.
+
+## 2026-11-18 — PR e integración pendientes
+
+- La rama `ejercicio-5-arquitectura-amos-solucion` está publicada con su estado final correcto y Actions en verde.
+- No se pudo crear ni fusionar el PR desde este entorno: no hay herramienta GitHub con permisos de escritura expuesta, `gh` CLI no está instalado y no se pudieron cargar las herramientas de Computer Use.
+- `main` permanece en `c91516bcf60eba107d3d0511fba4bfd4951fb642`; no se hizo push directo ni merge local para evitar omitir el PR.
+- Para completar la integración, queda abrir el PR hacia `main`, revisarlo y fusionarlo; después se podrá actualizar la rama local `main`.
