@@ -34,3 +34,13 @@ Este repositorio contiene **un único proyecto ficticio**, `portal-demo`. Vas a 
 | `.github/workflows/validacion.yml` | Instala OpenTofu y ejecuta las comprobaciones en GitHub Actions. |
 
 El workflow calcula un plan, **no ejecuta `tofu apply`** y no crea una web ni infraestructura comercial. Si tu equipo permite VS Code local, puedes usarlo con **esa misma copia**: el código y la comprobación en Actions son los mismos. La ruta principal, explicada paso a paso en los Word, funciona desde el navegador.
+
+## Arquitectura ficticia
+
+- **Necesidad:** representar un portal principal y una ficha de ayuda con la misma estructura.
+- **Reutilización:** ambas fichas utilizan el módulo local `modulo_ficha`, que define el recurso ficticio una sola vez.
+- **Entradas:** cada instancia recibe `nombre` y `entorno`; el módulo valida el prefijo `portal-` y los entornos permitidos.
+- **Escenarios:** los mismos archivos generan un plan predeterminado y otro de integración mediante `escenario-integracion.tfvars`.
+- **Evidencias:** GitHub Actions comprueba formato recursivo, valida la configuración, genera los dos planes y publica un resumen y un artefacto de texto.
+- **Límites:** no se ejecuta `apply`; no se crean portales, servidores ni redes, y no se miden costes ni observabilidad de infraestructura real.
+- **Gobernanza:** antes de aprobar un cambio, se revisan el diff, los planes y las evidencias del pipeline.
