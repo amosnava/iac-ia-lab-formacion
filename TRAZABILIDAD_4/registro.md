@@ -16,3 +16,10 @@
 - Se excluyó `GUIAS/~$ia_Alumnado_Ejercicio_2.docx`, archivo temporal de Word que no es necesario para los ejercicios.
 - Se creó este registro para que la trazabilidad solicitada acompañe la integración y pueda continuar con los cambios del ejercicio 4.
 - No se ejecutó OpenTofu ni se hizo `apply` o `destroy`.
+
+## 2026-11-18 — Publicación de la rama de integración
+
+- Se confirmó localmente el commit `19930a0532c4bd810227530c7ddffad78a39871c` con los siete archivos revisados.
+- Se publicó `integrar-ejercicio-3` en `origin`; GitHub devolvió el enlace para abrir el PR hacia `main`.
+- No se creó el PR desde este entorno: no hay herramienta GitHub para crear PR disponible y `gh` CLI no está instalado.
+- La integración queda pendiente de que se abra y revise el PR y de que los prerrequisitos lleguen a `main`.
