@@ -41,3 +41,9 @@
 - Se confirmó y publicó `Corrección: restaurar nombre del módulo` (`78084462c416427f7210b4d4330cf1db74ec5b1d`).
 - La ejecución [44296799184](https://github.com/amosnava/iac-ia-lab-formacion/actions/runs/44296799184) terminó en `success`: inicialización, formato recursivo, validación, los dos planes, resumen y publicación de evidencia tuvieron éxito.
 - Se publicó el artefacto `evidencia-iac-44296799184-1` (expira el 25-11-2026).
+
+## 2026-11-18 — Documentación y ejecución verde final
+
+- Se confirmó `Ejercicio 5: documentar arquitectura` (`1e21d7d99483b3fe65acc20488d7d539715a071b`) con `README.md` y esta actualización de trazabilidad en un commit separado.
+- La ejecución [44296968655](https://github.com/amosnava/iac-ia-lab-formacion/actions/runs/44296968655) terminó en `success` y verificó formato, validación, ambos planes, resumen y artefacto.
+- El ensayo temporal se corrigió antes del estado final publicado; el README describe la arquitectura ficticia y sus límites.
