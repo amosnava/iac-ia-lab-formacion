@@ -18,3 +18,17 @@
 - Se dejó la configuración en su estado final correcto. El ensayo temporal sin `nombre` requiere una ejecución posterior controlada y no se dejó en los archivos.
 - No se modificaron las variables de raíz ni `escenario-integracion.tfvars`; no se añadieron proveedores cloud ni credenciales.
 - No se ejecutó OpenTofu, no se hizo `apply` o `destroy`, y no se hizo commit ni push.
+
+## 2026-11-18 — Primer commit y validación verde
+
+- Se confirmó `Ejercicio 5: módulo local reutilizable` (`c45e91501084dcf5d42f3dc40dddfc08cd8ab36c`) con los tres archivos del módulo, `main.tf`, `outputs.tf`, el workflow y este registro; `README.md` quedó para un commit posterior como indica la guía.
+- Se publicó `ejercicio-5-arquitectura-amos-solucion` en `origin`.
+- La ejecución de Actions [44296306544](https://github.com/amosnava/iac-ia-lab-formacion/actions/runs/44296306544) terminó en `success`. El job confirma `success` para formato, validación, ambos planes, resumen y artefacto.
+- Se publicó el artefacto `evidencia-iac-44296306544-1` (expira el 25-11-2026).
+- La API permitió consultar estados y artefacto, pero negó la descarga del log detallado con `403 Must have admin rights`; no se registran como observados los detalles internos de las salidas de plan.
+
+## 2026-11-18 — Ensayo controlado: falta nombre en ayuda
+
+- Se quitó temporalmente `nombre = "portal-ayuda"` de la llamada raíz `module.ayuda`, manteniendo su `source` y `entorno`.
+- Se espera que `Validar` falle por el argumento obligatorio `nombre` ausente; los dos pasos de plan deberían omitirse, mientras que resumen y publicación de evidencia se intentan por `always()`.
+- Este fallo es deliberado y no debe permanecer en la solución final. La ejecución remota y su log se registrarán después de publicar el commit de prueba.
