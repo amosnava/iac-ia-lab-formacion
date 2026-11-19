@@ -24,8 +24,10 @@
 ## Ensayo controlado de entornos distintos
 
 - Se cambió únicamente `module.ayuda.entorno` de `var.entorno` a `"desarrollo"`; `module.portal` conserva `var.entorno` (`"pruebas"` por defecto).
-- Predicción: formato, `tofu validate` y el plan predeterminado pasan; la política predeterminada rechaza el plan con `POLÍTICA RECHAZADA: portal y ayuda deben pertenecer al mismo entorno`. Al fallar ese paso, plan y política de integración se omiten; resumen y evidencia se ejecutan por `always()`.
-- Commit y ejecución roja: pendientes de publicación y comprobación.
+- Commit de prueba: `eea19c0b93fef98d5ed9a18f129876a58816ec08` (`Prueba: ayuda en entorno diferente`), publicado en la rama del ejercicio.
+- Actions [44511887777](https://github.com/amosnava/iac-ia-lab-formacion/actions/runs/44511887777) terminó en `failure`. Formato, validación y plan predeterminado pasaron; `Politica del plan predeterminado` falló; el plan y la política de integración se omitieron; resumen y evidencia terminaron en éxito.
+- GitHub denegó la descarga del log detallado con HTTP 403, por lo que no se pudo observar independientemente la salida estándar. El mensaje previsto y emitido por el código para esta discrepancia es `POLÍTICA RECHAZADA: portal y ayuda deben pertenecer al mismo entorno`.
+- Tras la prueba, se restauró `module.ayuda.entorno = var.entorno`. El commit de corrección y su ejecución verde están pendientes.
 
 ## Corrección, entrega y PR
 
