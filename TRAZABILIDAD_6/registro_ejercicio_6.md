@@ -37,6 +37,10 @@
 
 ## Corrección, entrega y PR
 
-- Pull request: pendiente.
+- La ejecución de Actions [44512445858](https://github.com/amosnava/iac-ia-lab-formacion/actions/runs/44512445858), disparada al publicar la actualización de trazabilidad, terminó en `success`; formato, validación, ambos planes, ambas políticas, resumen y evidencia pasaron.
+- Artefacto de evidencia: `evidencia-iac-44512445858-1`, con retención hasta el 26-11-2026.
+- El diff neto contra `main` no contiene el cambio temporal de `main.tf`; la rama termina con `module.ayuda.entorno = var.entorno`.
+- No se pudo crear el pull request desde esta sesión: el servidor MCP de GitHub no estuvo disponible, `gh` no está instalado, no había credencial API en el entorno y no se pudieron cargar las herramientas de navegador. El push de GitHub ofreció este enlace para abrirlo manualmente: https://github.com/amosnava/iac-ia-lab-formacion/pull/new/ejercicio-6-amos-solucion
+- El PR queda pendiente de creación y revisión; no se fusionó nada en `main`.
 
-No se ejecutó OpenTofu localmente, `apply` ni `destroy`. Las comprobaciones de planes y política se realizarán en GitHub Actions, sin publicar los archivos temporales `.tfplan` como artefactos.
+No se ejecutó OpenTofu localmente, `apply` ni `destroy`. Los planes se generaron únicamente en runners de GitHub Actions y los `.tfplan` no se publicaron como artefactos.
