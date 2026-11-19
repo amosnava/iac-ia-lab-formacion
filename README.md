@@ -44,3 +44,11 @@ El workflow calcula un plan, **no ejecuta `tofu apply`** y no crea una web ni in
 - **Evidencias:** GitHub Actions comprueba formato recursivo, valida la configuración, genera los dos planes y publica un resumen y un artefacto de texto.
 - **Límites:** no se ejecuta `apply`; no se crean portales, servidores ni redes, y no se miden costes ni observabilidad de infraestructura real.
 - **Gobernanza:** antes de aprobar un cambio, se revisan el diff, los planes y las evidencias del pipeline.
+
+## Política del laboratorio
+
+`politica_plan.py` lee el JSON de cada plan y aprueba únicamente las dos altas ficticias esperadas: `module.portal.terraform_data.ficha` y `module.ayuda.terraform_data.ficha`. Comprueba sus nombres, que ambas usen el mismo entorno permitido y que no haya otras operaciones. El workflow ejecuta la política después de cada plan y muestra ambos resultados en el resumen de Actions.
+
+`tofu validate` comprueba la estructura y coherencia de la configuración; la política aplica además reglas de negocio al resultado previsto, como exigir que portal y ayuda compartan entorno. Por eso una configuración puede validar y generar un plan, pero ser rechazada por la política.
+
+Este control solo cubre las reglas didácticas del laboratorio. No sustituye una revisión humana, aprobaciones independientes, controles de permisos, análisis de costes o seguridad, ni demuestra que un despliegue real sea seguro. Los planes se inspeccionan en el runner; no se ejecuta `apply` ni se crean recursos cloud.
