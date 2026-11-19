@@ -17,10 +17,18 @@
 
 ## Publicaciones y ejecuciones
 
-- Commits del ejercicio 6: pendientes.
-- Publicación de la rama: pendiente.
-- Ejecución inicial verde: pendiente.
-- Prueba controlada roja: pendiente.
+- Commit inicial: `dbb26254ab5de368239fcd55f6aeaa2a23dd4059` (`Ejercicio 6: política sobre el plan`), publicado en `origin/ejercicio-6-amos-solucion`.
+- La ejecución inicial de Actions [44511608851](https://github.com/amosnava/iac-ia-lab-formacion/actions/runs/44511608851) terminó en `success`. Formato, validación, los dos planes, las dos políticas, resumen y publicación de evidencia pasaron.
+- Artefacto de evidencia: `evidencia-iac-44511608851-1`, con retención hasta el 26-11-2026. Los planes `.tfplan` no se publicaron como artefactos.
+
+## Ensayo controlado de entornos distintos
+
+- Se cambió únicamente `module.ayuda.entorno` de `var.entorno` a `"desarrollo"`; `module.portal` conserva `var.entorno` (`"pruebas"` por defecto).
+- Predicción: formato, `tofu validate` y el plan predeterminado pasan; la política predeterminada rechaza el plan con `POLÍTICA RECHAZADA: portal y ayuda deben pertenecer al mismo entorno`. Al fallar ese paso, plan y política de integración se omiten; resumen y evidencia se ejecutan por `always()`.
+- Commit y ejecución roja: pendientes de publicación y comprobación.
+
+## Corrección, entrega y PR
+
 - Corrección y ejecución verde: pendientes.
 - Pull request: pendiente.
 
