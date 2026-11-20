@@ -43,7 +43,11 @@
 
 ## README y PR
 
-- Se añadió la sección `Catálogo de fichas` al README y se actualizaron las direcciones citadas en `Política del laboratorio`. Falta confirmar estos cambios y validar la ejecución asociada.
-- Pull request: pendiente.
+- Se añadió la sección `Catálogo de fichas` al README y se actualizaron las direcciones citadas en `Política del laboratorio`.
+- Commit documental: `ff4d1c7704462eed51d3e217f74913eb0e68bb4d` (`Ejercicio 7: documentar catalogo de fichas`), publicado en la rama.
+- Actions [44709884322](https://github.com/amosnava/iac-ia-lab-formacion/actions/runs/44709884322) terminó en `success`: formato, validación, ambos planes, ambas políticas, resumen y evidencia pasaron.
+- Artefacto: `evidencia-iac-44709884322-1`, con retención hasta el 27-11-2026.
+- Diff neto revisado contra `main`: `main.tf`, `outputs.tf`, `politica_plan.py`, `README.md` y este registro. La prueba temporal no cambia el estado final del catálogo.
+- El PR está pendiente: no hay herramienta GitHub con permisos de escritura disponible en esta sesión. El enlace para abrirlo manualmente es https://github.com/amosnava/iac-ia-lab-formacion/pull/new/ejercicio-7-amos-solucion .
 
 No ejecutar OpenTofu localmente, `apply` ni `destroy`. Los planes y las políticas se comprobarán en GitHub Actions; los `.tfplan` son temporales y no deben publicarse como artefactos.
