@@ -16,5 +16,8 @@
 | 2026-11-20 13:27 +0100 | Crear `ejercicio-8-amos-solucion-con-skill` desde `origin/ejercicio-7-amos-solucion`. | Rama nueva en `c7ee93a`; se mantiene separado el trabajo local previo. |
 | 2026-11-20 13:27 +0100 | Revisar los archivos base con la skill recién creada. | El workflow existente ejecuta init, formato, validate, dos planes y dos políticas; no incluye apply. `.gitignore` excluye planes y protege los `.tfvars` salvo `escenario-integracion.tfvars`. |
 | 2026-11-20 13:28 +0100 | Crear `.github/skills/iac-opentofu-laboratorio/SKILL.md` y leerlo para ejecutar su procedimiento en esta rama. | La skill cubre inspección de la base, propagación raíz→módulo→plan, política recursiva, prueba negativa, Actions y trazabilidad. |
+| 2026-11-20 13:29 +0100 | Commit `c062c0c` y push de la skill y el registro inicial. | Se publicó `ejercicio-8-amos-solucion-con-skill`; Actions [44736502260](https://github.com/amosnava/iac-ia-lab-formacion/actions/runs/44736502260) pasó con el código base del ejercicio 7. |
+| 2026-11-20 13:30 +0100 | Reaplicar los cambios del ejercicio 8 siguiendo la skill. | Cambios en `variables.tf`, `escenario-integracion.tfvars`, `main.tf`, `modulo_ficha/variables.tf`, `modulo_ficha/main.tf`, `politica_plan.py` y `README.md`. Valores previstos: `pruebas/equipo-lab` e `integracion/equipo-integracion`. |
+| 2026-11-20 13:30 +0100 | Revisar el diff y herramientas locales. | `git diff --check` pasó; `.github/workflows/validacion.yml` y `.gitignore` no cambiaron. OpenTofu no está instalado y Python no está disponible como intérprete; no se instaló software. La comprobación de planes se hará en Actions. |
 
-Las siguientes filas registrarán la creación y aplicación de la skill, los cambios del ejercicio, los commits, las ejecuciones y el resultado final.
+Las siguientes filas registrarán los commits, ejecuciones, prueba controlada, corrección y resultado final.
