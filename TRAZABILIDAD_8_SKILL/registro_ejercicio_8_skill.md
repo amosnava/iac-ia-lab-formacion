@@ -21,5 +21,7 @@
 | 2026-11-20 13:30 +0100 | Revisar el diff y herramientas locales. | `git diff --check` pasó; `.github/workflows/validacion.yml` y `.gitignore` no cambiaron. OpenTofu no está instalado y Python no está disponible como intérprete; no se instaló software. La comprobación de planes se hará en Actions. |
 | 2026-11-20 13:31 +0100 | Commit `e30d104` y push de la implementación correcta. | Actions [44736615336](https://github.com/amosnava/iac-ia-lab-formacion/actions/runs/44736615336) pasó; los planes predeterminado e integración y ambas políticas fueron verdes. |
 | 2026-11-20 13:31 +0100 | Predecir la prueba de responsable incorrecto según la skill. | Con `equipo-lab` en integración, formato, validate, plan predeterminado, política predeterminada y plan de integración deben pasar; la política de integración debe rechazarlo. |
+| 2026-11-20 13:33 +0100 | Commit `08820fc` y push de la prueba controlada. | Actions [44736724334](https://github.com/amosnava/iac-ia-lab-formacion/actions/runs/44736724334) falló según lo previsto; se produjo `evidencia-iac-44736724334-1`. El responsable incorrecto debe ser rechazado por la política de integración. |
+| 2026-11-20 13:34 +0100 | Restaurar `responsable = "equipo-integracion"` en el `.tfvars`. | Configuración correcta restaurada; pendiente publicar y comprobar la ejecución. |
 
-Las siguientes filas registrarán la prueba controlada, corrección, ejecuciones finales y estado del PR.
+Las siguientes filas registrarán la corrección, ejecuciones finales y estado del PR.
