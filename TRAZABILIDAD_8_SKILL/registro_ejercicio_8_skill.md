@@ -19,5 +19,7 @@
 | 2026-11-20 13:29 +0100 | Commit `c062c0c` y push de la skill y el registro inicial. | Se publicó `ejercicio-8-amos-solucion-con-skill`; Actions [44736502260](https://github.com/amosnava/iac-ia-lab-formacion/actions/runs/44736502260) pasó con el código base del ejercicio 7. |
 | 2026-11-20 13:30 +0100 | Reaplicar los cambios del ejercicio 8 siguiendo la skill. | Cambios en `variables.tf`, `escenario-integracion.tfvars`, `main.tf`, `modulo_ficha/variables.tf`, `modulo_ficha/main.tf`, `politica_plan.py` y `README.md`. Valores previstos: `pruebas/equipo-lab` e `integracion/equipo-integracion`. |
 | 2026-11-20 13:30 +0100 | Revisar el diff y herramientas locales. | `git diff --check` pasó; `.github/workflows/validacion.yml` y `.gitignore` no cambiaron. OpenTofu no está instalado y Python no está disponible como intérprete; no se instaló software. La comprobación de planes se hará en Actions. |
+| 2026-11-20 13:31 +0100 | Commit `e30d104` y push de la implementación correcta. | Actions [44736615336](https://github.com/amosnava/iac-ia-lab-formacion/actions/runs/44736615336) pasó; los planes predeterminado e integración y ambas políticas fueron verdes. |
+| 2026-11-20 13:31 +0100 | Predecir la prueba de responsable incorrecto según la skill. | Con `equipo-lab` en integración, formato, validate, plan predeterminado, política predeterminada y plan de integración deben pasar; la política de integración debe rechazarlo. |
 
-Las siguientes filas registrarán los commits, ejecuciones, prueba controlada, corrección y resultado final.
+Las siguientes filas registrarán la prueba controlada, corrección, ejecuciones finales y estado del PR.
