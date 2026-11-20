@@ -23,5 +23,8 @@ La validación de los planes se ejecutará en el workflow existente de GitHub Ac
 | 2026-11-20 12:37 +0100 | Crear `ejercicio-8-amos-solucion` desde `origin/ejercicio-7-amos-solucion`. | Rama creada desde `c7ee93a`; los commits locales de personalización no se incluyeron. |
 | 2026-11-20 12:37 +0100 | Añadir `responsable` en la raíz y el módulo, las etiquetas ficticias, las validaciones de política y la documentación inicial. | Cambios implementados; pendientes las verificaciones en el workflow y la prueba controlada. |
 | 2026-11-20 12:38 +0100 | Comprobar herramientas y diff local. | `git diff --check` pasó y el workflow no cambió. OpenTofu no está instalado; Python no está disponible como intérprete en este equipo. No se instaló software; la validación del plan y de la política se realizará en GitHub Actions. |
+| 2026-11-20 12:39 +0100 | Commit `b778fcc` y push de la implementación inicial a `ejercicio-8-amos-solucion`. | Rama publicada en el repositorio personal; el commit disparó el workflow existente. |
+| 2026-11-20 12:40 +0100 | Revisar Actions [44729556613](https://github.com/amosnava/iac-ia-lab-formacion/actions/runs/44729556613). | Ejecución `success`: inicializar, formato, validar, ambos planes y ambas políticas pasaron. Se produjo el artefacto `evidencia-iac-44729556613-1`. |
+| 2026-11-20 12:40 +0100 | Revisar el caso de marcas anidadas en la política. | La búsqueda recursiva trata diccionarios/listas con valores `false` como no marcados y detecta cualquier `true`; el plan inicial aceptado confirma que las marcas `false` del plan real no provocaron un rechazo. |
 
 Las modificaciones, commits, publicaciones y ejecuciones de Actions se anotarán aquí durante el ejercicio.
