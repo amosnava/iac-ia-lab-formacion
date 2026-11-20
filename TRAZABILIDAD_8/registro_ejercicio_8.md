@@ -30,5 +30,7 @@ La validación de los planes se ejecutará en el workflow existente de GitHub Ac
 | 2026-11-20 12:41 +0100 | Predecir el ensayo con responsable incorrecto. | Los pasos hasta plan de integración deben pasar; el responsable incorrecto solo debe ser rechazado por la política de integración. |
 | 2026-11-20 12:42 +0100 | Publicar la prueba controlada con `responsable = "equipo-lab"` en integración. | Commit `fd94583`; Actions [44729729209](https://github.com/amosnava/iac-ia-lab-formacion/actions/runs/44729729209) terminó en `failure`, con evidencia `evidencia-iac-44729729209-1`. El cambio es una cadena válida, así que el rechazo esperado es la política de integración: `POLÍTICA RECHAZADA: responsable no aprobado para integracion`. |
 | 2026-11-20 12:42 +0100 | Restaurar `responsable = "equipo-integracion"` en `escenario-integracion.tfvars`. | Valor aprobado recuperado; pendiente publicar y verificar la corrección. |
+| 2026-11-20 12:45 +0100 | Commit `25e5511` y push de la corrección. | Actions [44730168298](https://github.com/amosnava/iac-ia-lab-formacion/actions/runs/44730168298) terminó en `success`; ambos planes y ambas políticas volvieron a pasar. Artefacto `evidencia-iac-44730168298-1`. |
+| 2026-11-20 12:46 +0100 | Actualizar el README con la regla por entorno, el resultado del ensayo y la corrección. | Documentación modificada; pendiente commit, push y ejecución final. |
 
 Las modificaciones, commits, publicaciones y ejecuciones de Actions se anotarán aquí durante el ejercicio.
