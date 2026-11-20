@@ -38,4 +38,9 @@
 - README y comprobación final: pendientes.
 - Pull request: pendiente.
 
+## Incidencia de formato tras retirar `informes`
+
+- El commit de corrección `0bc9bb77047318e29250239351e35697109a5a09` restauró las dos claves, pero Actions [44709199191](https://github.com/amosnava/iac-ia-lab-formacion/actions/runs/44709199191) falló primero en `Comprobar formato`; validación, planes y políticas quedaron omitidos. Resumen y evidencia sí terminaron.
+- OpenTofu no está instalado localmente, así que no se instaló software. La revisión local encontró la asignación `value` sin alinear con `description` en `outputs.tf`; se corrige para que Actions vuelva a comprobar el catálogo.
+
 No ejecutar OpenTofu localmente, `apply` ni `destroy`. Los planes y las políticas se comprobarán en GitHub Actions; los `.tfplan` son temporales y no deben publicarse como artefactos.
