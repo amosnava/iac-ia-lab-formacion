@@ -47,8 +47,14 @@ El workflow calcula un plan, **no ejecuta `tofu apply`** y no crea una web ni in
 
 ## Política del laboratorio
 
-`politica_plan.py` lee el JSON de cada plan y aprueba únicamente las dos altas ficticias esperadas: `module.portal.terraform_data.ficha` y `module.ayuda.terraform_data.ficha`. Comprueba sus nombres, que ambas usen el mismo entorno permitido y que no haya otras operaciones. El workflow ejecuta la política después de cada plan y muestra ambos resultados en el resumen de Actions.
+`politica_plan.py` lee el JSON de cada plan y aprueba únicamente las dos altas ficticias esperadas: `module.fichas["portal"].terraform_data.ficha` y `module.fichas["ayuda"].terraform_data.ficha`. Comprueba sus nombres, que ambas usen el mismo entorno permitido y que no haya otras operaciones. El workflow ejecuta la política después de cada plan y muestra ambos resultados en el resumen de Actions.
 
 `tofu validate` comprueba la estructura y coherencia de la configuración; la política aplica además reglas de negocio al resultado previsto, como exigir que portal y ayuda compartan entorno. Por eso una configuración puede validar y generar un plan, pero ser rechazada por la política.
 
 Este control solo cubre las reglas didácticas del laboratorio. No sustituye una revisión humana, aprobaciones independientes, controles de permisos, análisis de costes o seguridad, ni demuestra que un despliegue real sea seguro. Los planes se inspeccionan en el runner; no se ejecuta `apply` ni se crean recursos cloud.
+
+## Catálogo de fichas
+
+El local `catalogo` de `main.tf` contiene las claves `portal` y `ayuda`. Una única llamada al módulo usa `for_each` para crear una instancia por clave; `each.value` entrega el nombre (`portal-demo` o `portal-ayuda`, y `portal-interno` para portal en integración). La expresión `for` de `outputs.tf` reúne las salidas `resumen` en un mapa conservando las claves.
+
+La prueba temporal con la clave `informes` fue válida para el formato, la validación y el plan, pero la política la rechazó porque solo autoriza las fichas `portal` y `ayuda`. Retirar esa entrada restaura el catálogo aprobado. Esto no es un despliegue ni un servicio real de autoservicio: solo se planifican fichas ficticias con `terraform_data`, sin `apply` ni infraestructura cloud.

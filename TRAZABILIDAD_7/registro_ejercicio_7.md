@@ -14,7 +14,7 @@
 - En `outputs.tf`, `resumen` se construye con una expresión `for` que conserva las claves de `module.fichas`.
 - En `politica_plan.py`, se actualizaron las dos direcciones permitidas y la identificación de ayuda. Se mantuvieron las reglas existentes y el rechazo de recuento ahora informa `se esperan exactamente las fichas portal y ayuda`.
 - No se modificó `modulo_ficha/` ni el workflow.
-- Primera ejecución verde, prueba temporal de `informes`, corrección y README: pendientes.
+- Los resultados de la ejecución verde inicial y de la prueba temporal de `informes` se documentan a continuación.
 
 ## Publicaciones y ejecuciones
 
@@ -32,16 +32,18 @@
 - Revisión asistida por IA contrastada con el plan: `for_each` incorpora la clave del mapa a cada dirección, y añadir `informes` crea una tercera instancia; la expresión `for` de la salida solo reorganiza resultados, no amplía lo que autoriza la política.
 - Tras la ejecución roja, se retiró la línea `informes`; queda pendiente publicar la corrección.
 
-## Corrección, README y PR
-
-- Corrección y nueva ejecución verde: pendientes.
-- README y comprobación final: pendientes.
-- Pull request: pendiente.
-
-## Incidencia de formato tras retirar `informes`
+## Incidencias de formato y corrección
 
 - El commit de corrección `0bc9bb77047318e29250239351e35697109a5a09` restauró las dos claves, pero Actions [44709199191](https://github.com/amosnava/iac-ia-lab-formacion/actions/runs/44709199191) falló primero en `Comprobar formato`; validación, planes y políticas quedaron omitidos. Resumen y evidencia sí terminaron.
 - El primer intento de corregir el formato no fue suficiente: Actions [44709437910](https://github.com/amosnava/iac-ia-lab-formacion/actions/runs/44709437910) también falló en `Comprobar formato`. OpenTofu no está instalado localmente y no se instaló software.
 - La revisión posterior identificó que `main.tf` conservaba el espaciado alineado para la clave larga `informes` después de retirarla. Se vuelve a alinear el mapa de dos entradas y se restaura en `outputs.tf` el formato de la salida que ya estaba presente en la base.
+- Commit de corrección final: `ffa159a92588fa653e094e81352c92b04f12b84d` (`Correccion: alinear mapa de dos fichas`), publicado en la rama.
+- Actions [44709636310](https://github.com/amosnava/iac-ia-lab-formacion/actions/runs/44709636310) terminó en `success`: formato, validación, ambos planes y ambas políticas pasaron.
+- Artefacto: `evidencia-iac-44709636310-1`, con retención hasta el 27-11-2026.
+
+## README y PR
+
+- Se añadió la sección `Catálogo de fichas` al README y se actualizaron las direcciones citadas en `Política del laboratorio`. Falta confirmar estos cambios y validar la ejecución asociada.
+- Pull request: pendiente.
 
 No ejecutar OpenTofu localmente, `apply` ni `destroy`. Los planes y las políticas se comprobarán en GitHub Actions; los `.tfplan` son temporales y no deben publicarse como artefactos.
