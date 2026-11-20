@@ -23,6 +23,7 @@
 | 2026-11-20 13:31 +0100 | Predecir la prueba de responsable incorrecto según la skill. | Con `equipo-lab` en integración, formato, validate, plan predeterminado, política predeterminada y plan de integración deben pasar; la política de integración debe rechazarlo. |
 | 2026-11-20 13:33 +0100 | Commit `08820fc` y push de la prueba controlada. | Actions [44736724334](https://github.com/amosnava/iac-ia-lab-formacion/actions/runs/44736724334) falló según lo previsto; se produjo `evidencia-iac-44736724334-1`. El responsable incorrecto debe ser rechazado por la política de integración. |
 | 2026-11-20 13:34 +0100 | Restaurar `responsable = "equipo-integracion"` en el `.tfvars`. | Commit `4c3e88d`; Actions [44736830900](https://github.com/amosnava/iac-ia-lab-formacion/actions/runs/44736830900) pasó con ambos planes y ambas políticas; artefacto `evidencia-iac-44736830900-1`. |
-| 2026-11-20 13:35 +0100 | Añadir al README la referencia al ensayo rojo y a la corrección. | Cambio documental preparado; pendiente commit, push y ejecución final. |
+| 2026-11-20 13:35 +0100 | Añadir al README la referencia al ensayo rojo y a la corrección. | Commit `ad10434`; Actions [44736928219](https://github.com/amosnava/iac-ia-lab-formacion/actions/runs/44736928219) terminó en `success`. |
+| 2026-11-20 13:36 +0100 | Verificación final de la repetición. | `responsable = "equipo-integracion"` quedó restaurado; workflow y `.gitignore` permanecieron intactos; rama remota sincronizada y árbol de trabajo limpio. No se ejecutó apply/destroy ni se solicitó PR para esta repetición. |
 
-La rama de repetición no tiene un PR solicitado; se registrará aquí cualquier cambio posterior de estado.
+La skill y la repetición quedan disponibles en la rama `ejercicio-8-amos-solucion-con-skill`.
