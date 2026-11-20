@@ -7,7 +7,13 @@ DIRECCIONES_ESPERADAS = {
     'module.fichas["ayuda"].terraform_data.ficha',
 }
 ENTORNOS_PERMITIDOS = {"desarrollo", "pruebas", "integracion"}
-CAMPOS_PERMITIDOS = {"nombre", "entorno"}
+CAMPOS_PERMITIDOS = {"nombre", "entorno", "etiquetas"}
+ETIQUETAS_PERMITIDAS = {"proyecto", "entorno", "responsable"}
+RESPONSABLE_POR_ENTORNO = {
+    "desarrollo": "equipo-lab",
+    "pruebas": "equipo-lab",
+    "integracion": "equipo-integracion",
+}
 
 
 def rechazar(motivo):
@@ -15,15 +21,27 @@ def rechazar(motivo):
     raise SystemExit(1)
 
 
+def contiene_true(valor):
+    if valor is True:
+        return True
+    if isinstance(valor, dict):
+        return any(contiene_true(elemento) for elemento in valor.values())
+    if isinstance(valor, list):
+        return any(contiene_true(elemento) for elemento in valor)
+    return False
+
+
 def esta_marcado(metadatos, campo):
-    nodo = metadatos
-    for clave in ("input", campo):
-        if nodo is True:
-            return True
-        if not isinstance(nodo, dict):
-            return False
-        nodo = nodo.get(clave)
-    return nodo is True
+    if metadatos is True:
+        return True
+    if not isinstance(metadatos, dict):
+        return False
+    entradas = metadatos.get("input", {})
+    if entradas is True:
+        return True
+    if isinstance(entradas, dict):
+        return contiene_true(entradas.get(campo, {}))
+    return contiene_true(entradas)
 
 
 try:
@@ -77,6 +95,9 @@ for recurso in cambios:
     campos_extra = set(entradas) - CAMPOS_PERMITIDOS
     if campos_extra:
         rechazar(f"{direccion}: input contiene campos no permitidos")
+    campos_faltantes = CAMPOS_PERMITIDOS - set(entradas)
+    if campos_faltantes:
+        rechazar(f"{direccion}: input no contiene todos los campos requeridos")
 
     desconocidos = cambio.get("after_unknown", {})
     sensibles = cambio.get("after_sensitive", {})
@@ -86,16 +107,25 @@ for recurso in cambios:
         rechazar(f"{direccion}: after_sensitive tiene una estructura inválida")
 
     valores = {}
-    for campo in ("nombre", "entorno"):
+    for campo in ("nombre", "entorno", "etiquetas"):
         if esta_marcado(desconocidos, campo):
             rechazar(f"{direccion}: el valor {campo} es desconocido")
         if esta_marcado(sensibles, campo):
             rechazar(f"{direccion}: el valor {campo} está marcado como sensible")
-        if campo not in entradas:
-            rechazar(f"{direccion}: falta el valor {campo}")
-        if not isinstance(entradas[campo], str):
-            rechazar(f"{direccion}: el valor {campo} debe ser una cadena conocida")
         valores[campo] = entradas[campo]
+
+    for campo in ("nombre", "entorno"):
+        if not isinstance(valores[campo], str):
+            rechazar(f"{direccion}: el valor {campo} debe ser una cadena conocida")
+
+    etiquetas = valores["etiquetas"]
+    if not isinstance(etiquetas, dict):
+        rechazar(f"{direccion}: etiquetas debe ser un objeto")
+    if set(etiquetas) != ETIQUETAS_PERMITIDAS:
+        rechazar(f"{direccion}: etiquetas debe contener proyecto, entorno y responsable")
+    for campo in ETIQUETAS_PERMITIDAS:
+        if not isinstance(etiquetas[campo], str):
+            rechazar(f"{direccion}: la etiqueta {campo} debe ser una cadena conocida")
 
     if not valores["nombre"].startswith("portal-"):
         rechazar(f"{direccion}: el nombre debe comenzar por portal-")
@@ -104,6 +134,13 @@ for recurso in cambios:
             rechazar("la ficha de ayuda debe llamarse portal-ayuda")
     if valores["entorno"] not in ENTORNOS_PERMITIDOS:
         rechazar(f"{direccion}: entorno no permitido: {valores['entorno']}")
+    if etiquetas["proyecto"] != "nexo-portal":
+        rechazar(f"{direccion}: proyecto debe ser nexo-portal")
+    if etiquetas["entorno"] != valores["entorno"]:
+        rechazar(f"{direccion}: la etiqueta entorno debe coincidir con el entorno de la ficha")
+    responsable_esperado = RESPONSABLE_POR_ENTORNO[valores["entorno"]]
+    if etiquetas["responsable"] != responsable_esperado:
+        rechazar(f"responsable no aprobado para {valores['entorno']}")
 
     por_direccion[direccion] = valores
 
@@ -115,4 +152,4 @@ entorno_ayuda = por_direccion['module.fichas["ayuda"].terraform_data.ficha']["en
 if entorno_portal != entorno_ayuda:
     rechazar("portal y ayuda deben pertenecer al mismo entorno")
 
-print("POLÍTICA APROBADA: dos fichas ficticias, mismo entorno y sin operaciones reales")
+print("POLÍTICA APROBADA: dos fichas con etiquetas y responsable ficticios correctos")

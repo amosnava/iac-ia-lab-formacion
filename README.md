@@ -53,6 +53,14 @@ El workflow calcula un plan, **no ejecuta `tofu apply`** y no crea una web ni in
 
 Este control solo cubre las reglas didácticas del laboratorio. No sustituye una revisión humana, aprobaciones independientes, controles de permisos, análisis de costes o seguridad, ni demuestra que un despliegue real sea seguro. Los planes se inspeccionan en el runner; no se ejecuta `apply` ni se crean recursos cloud.
 
+## Responsables y etiquetas ficticias
+
+El ejercicio 8 añade la variable raíz `responsable`: su valor predeterminado es `equipo-lab`, y `escenario-integracion.tfvars` selecciona `equipo-integracion`. La raíz pasa ese dato a cada instancia del módulo, que lo incorpora junto con `proyecto = "nexo-portal"` y el entorno en el mapa `etiquetas` de `terraform_data.ficha.input`.
+
+La política comprueba que las fichas tengan exactamente las entradas y etiquetas esperadas, que las etiquetas coincidan con el entorno y que el equipo esté aprobado para ese entorno: `equipo-lab` para desarrollo y pruebas, y `equipo-integracion` para integración. Un responsable incorrecto puede superar formato, validación y plan, pero debe ser rechazado por la política del plan correspondiente. En la prueba controlada se usó `equipo-lab` en integración y la política rechazó ese plan ([ejecución roja](https://github.com/amosnava/iac-ia-lab-formacion/actions/runs/44729729209)); después se restauró `equipo-integracion` y se volvió a ejecutar el workflow ([ejecución de corrección](https://github.com/amosnava/iac-ia-lab-formacion/actions/runs/44730168298)).
+
+Estas etiquetas son datos ficticios de `terraform_data`, no etiquetas nativas de recursos cloud. El workflow solo inspecciona planes; no ejecuta `apply` ni crea infraestructura real.
+
 ## Catálogo de fichas
 
 El local `catalogo` de `main.tf` contiene las claves `portal` y `ayuda`. Una única llamada al módulo usa `for_each` para crear una instancia por clave; `each.value` entrega el nombre (`portal-demo` o `portal-ayuda`, y `portal-interno` para portal en integración). La expresión `for` de `outputs.tf` reúne las salidas `resumen` en un mapa conservando las claves.
