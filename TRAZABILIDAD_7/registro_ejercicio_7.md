@@ -18,8 +18,18 @@
 
 ## Publicaciones y ejecuciones
 
-- Commit verde inicial: pendiente.
-- Prueba roja de tercera ficha: pendiente.
+- Commit inicial: `d07ad5eeeb2ce32040c1349082f021dad4554b63` (`Ejercicio 7: catalogo de fichas reutilizable`), publicado en `origin/ejercicio-7-amos-solucion`.
+- Actions [44708522723](https://github.com/amosnava/iac-ia-lab-formacion/actions/runs/44708522723) terminó en `success`. Formato, validación, los dos planes y las dos políticas pasaron.
+- Artefacto: `evidencia-iac-44708522723-1`, con retención hasta el 27-11-2026.
+
+## Ensayo controlado: tercera ficha
+
+- Se añadió temporalmente `informes = "portal-informes"` al catálogo de `main.tf`.
+- Predicción: formato, `tofu validate` y el plan predeterminado pasan; el plan contiene tres altas, pero la política predeterminada lo rechaza con `POLÍTICA RECHAZADA: se esperan exactamente las fichas portal y ayuda`. Plan y política de integración se omiten; resumen y evidencia pueden completarse por `always()`.
+- Commit de prueba y resultado de Actions: pendientes.
+
+## Corrección, README y PR
+
 - Corrección y nueva ejecución verde: pendientes.
 - README y comprobación final: pendientes.
 - Pull request: pendiente.
