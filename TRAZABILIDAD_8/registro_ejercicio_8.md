@@ -26,5 +26,6 @@ La validación de los planes se ejecutará en el workflow existente de GitHub Ac
 | 2026-11-20 12:39 +0100 | Commit `b778fcc` y push de la implementación inicial a `ejercicio-8-amos-solucion`. | Rama publicada en el repositorio personal; el commit disparó el workflow existente. |
 | 2026-11-20 12:40 +0100 | Revisar Actions [44729556613](https://github.com/amosnava/iac-ia-lab-formacion/actions/runs/44729556613). | Ejecución `success`: inicializar, formato, validar, ambos planes y ambas políticas pasaron. Se produjo el artefacto `evidencia-iac-44729556613-1`. |
 | 2026-11-20 12:40 +0100 | Revisar el caso de marcas anidadas en la política. | La búsqueda recursiva trata diccionarios/listas con valores `false` como no marcados y detecta cualquier `true`; el plan inicial aceptado confirma que las marcas `false` del plan real no provocaron un rechazo. |
+| 2026-11-20 12:41 +0100 | Preparar el ensayo controlado cambiando solo el responsable de integración a `equipo-lab`. | Predicción: formato, validación, plan y política predeterminada pasarán; el plan de integración pasará y su política fallará con `POLÍTICA RECHAZADA: responsable no aprobado para integracion`. Resultado pendiente de Actions. |
 
 Las modificaciones, commits, publicaciones y ejecuciones de Actions se anotarán aquí durante el ejercicio.
