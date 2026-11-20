@@ -3,8 +3,8 @@ import sys
 
 
 DIRECCIONES_ESPERADAS = {
-    "module.portal.terraform_data.ficha",
-    "module.ayuda.terraform_data.ficha",
+    'module.fichas["portal"].terraform_data.ficha',
+    'module.fichas["ayuda"].terraform_data.ficha',
 }
 ENTORNOS_PERMITIDOS = {"desarrollo", "pruebas", "integracion"}
 CAMPOS_PERMITIDOS = {"nombre", "entorno"}
@@ -42,7 +42,7 @@ cambios = plan["resource_changes"]
 if not isinstance(cambios, list):
     rechazar("resource_changes debe ser una lista")
 if len(cambios) != 2:
-    rechazar("debe haber exactamente dos cambios")
+    rechazar("se esperan exactamente las fichas portal y ayuda")
 
 por_direccion = {}
 for recurso in cambios:
@@ -99,7 +99,7 @@ for recurso in cambios:
 
     if not valores["nombre"].startswith("portal-"):
         rechazar(f"{direccion}: el nombre debe comenzar por portal-")
-    if direccion == "module.ayuda.terraform_data.ficha":
+    if direccion == 'module.fichas["ayuda"].terraform_data.ficha':
         if valores["nombre"] != "portal-ayuda":
             rechazar("la ficha de ayuda debe llamarse portal-ayuda")
     if valores["entorno"] not in ENTORNOS_PERMITIDOS:
@@ -110,8 +110,8 @@ for recurso in cambios:
 if set(por_direccion) != DIRECCIONES_ESPERADAS:
     rechazar("las direcciones no coinciden con las dos fichas esperadas")
 
-entorno_portal = por_direccion["module.portal.terraform_data.ficha"]["entorno"]
-entorno_ayuda = por_direccion["module.ayuda.terraform_data.ficha"]["entorno"]
+entorno_portal = por_direccion['module.fichas["portal"].terraform_data.ficha']["entorno"]
+entorno_ayuda = por_direccion['module.fichas["ayuda"].terraform_data.ficha']["entorno"]
 if entorno_portal != entorno_ayuda:
     rechazar("portal y ayuda deben pertenecer al mismo entorno")
 
