@@ -22,6 +22,7 @@
 | 2026-11-20 13:31 +0100 | Commit `e30d104` y push de la implementación correcta. | Actions [44736615336](https://github.com/amosnava/iac-ia-lab-formacion/actions/runs/44736615336) pasó; los planes predeterminado e integración y ambas políticas fueron verdes. |
 | 2026-11-20 13:31 +0100 | Predecir la prueba de responsable incorrecto según la skill. | Con `equipo-lab` en integración, formato, validate, plan predeterminado, política predeterminada y plan de integración deben pasar; la política de integración debe rechazarlo. |
 | 2026-11-20 13:33 +0100 | Commit `08820fc` y push de la prueba controlada. | Actions [44736724334](https://github.com/amosnava/iac-ia-lab-formacion/actions/runs/44736724334) falló según lo previsto; se produjo `evidencia-iac-44736724334-1`. El responsable incorrecto debe ser rechazado por la política de integración. |
-| 2026-11-20 13:34 +0100 | Restaurar `responsable = "equipo-integracion"` en el `.tfvars`. | Configuración correcta restaurada; pendiente publicar y comprobar la ejecución. |
+| 2026-11-20 13:34 +0100 | Restaurar `responsable = "equipo-integracion"` en el `.tfvars`. | Commit `4c3e88d`; Actions [44736830900](https://github.com/amosnava/iac-ia-lab-formacion/actions/runs/44736830900) pasó con ambos planes y ambas políticas; artefacto `evidencia-iac-44736830900-1`. |
+| 2026-11-20 13:35 +0100 | Añadir al README la referencia al ensayo rojo y a la corrección. | Cambio documental preparado; pendiente commit, push y ejecución final. |
 
-Las siguientes filas registrarán la corrección, ejecuciones finales y estado del PR.
+La rama de repetición no tiene un PR solicitado; se registrará aquí cualquier cambio posterior de estado.

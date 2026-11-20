@@ -57,7 +57,7 @@ Este control solo cubre las reglas didácticas del laboratorio. No sustituye una
 
 El ejercicio 8 añade la variable raíz `responsable`: su valor predeterminado es `equipo-lab`, y `escenario-integracion.tfvars` selecciona `equipo-integracion`. La raíz pasa ese dato a cada instancia del módulo, que lo incorpora junto con `proyecto = "nexo-portal"` y el entorno en el mapa `etiquetas` de `terraform_data.ficha.input`.
 
-La política comprueba que las fichas tengan exactamente las entradas y etiquetas esperadas, que las etiquetas coincidan con el entorno y que el equipo esté aprobado para ese entorno: `equipo-lab` para desarrollo y pruebas, y `equipo-integracion` para integración. Un responsable incorrecto puede superar formato, validación y plan, pero debe ser rechazado por la política del plan correspondiente. La corrección restaura el responsable aprobado.
+La política comprueba que las fichas tengan exactamente las entradas y etiquetas esperadas, que las etiquetas coincidan con el entorno y que el equipo esté aprobado para ese entorno: `equipo-lab` para desarrollo y pruebas, y `equipo-integracion` para integración. Un responsable incorrecto puede superar formato, validación y plan, pero debe ser rechazado por la política del plan correspondiente. En la repetición guiada por la skill, `equipo-lab` en integración fue rechazado ([prueba roja](https://github.com/amosnava/iac-ia-lab-formacion/actions/runs/44736724334)); al restaurar `equipo-integracion`, se lanzó la [ejecución de corrección](https://github.com/amosnava/iac-ia-lab-formacion/actions/runs/44736830900).
 
 Estas etiquetas son datos ficticios de `terraform_data`, no etiquetas nativas de recursos cloud. El workflow solo inspecciona planes; no ejecuta `apply` ni crea infraestructura real.
 
