@@ -25,8 +25,12 @@
 ## Ensayo controlado: tercera ficha
 
 - Se añadió temporalmente `informes = "portal-informes"` al catálogo de `main.tf`.
-- Predicción: formato, `tofu validate` y el plan predeterminado pasan; el plan contiene tres altas, pero la política predeterminada lo rechaza con `POLÍTICA RECHAZADA: se esperan exactamente las fichas portal y ayuda`. Plan y política de integración se omiten; resumen y evidencia pueden completarse por `always()`.
-- Commit de prueba y resultado de Actions: pendientes.
+- Commit de prueba: `64620ad7bebb09e973497a091b478fa2e8f96cd9` (`Prueba: tercera ficha sin aprobar`), publicado en la rama del ejercicio.
+- Actions [44708845840](https://github.com/amosnava/iac-ia-lab-formacion/actions/runs/44708845840) terminó en `failure`. Formato, validación y plan predeterminado pasaron; la política predeterminada falló; ambos pasos de integración se omitieron; resumen y evidencia terminaron en éxito.
+- Artefacto: `evidencia-iac-44708845840-1`, con retención hasta el 27-11-2026.
+- El rechazo se produce porque la política permite exactamente las dos direcciones del catálogo `portal` y `ayuda`; el mensaje implementado es `POLÍTICA RECHAZADA: se esperan exactamente las fichas portal y ayuda`.
+- Revisión asistida por IA contrastada con el plan: `for_each` incorpora la clave del mapa a cada dirección, y añadir `informes` crea una tercera instancia; la expresión `for` de la salida solo reorganiza resultados, no amplía lo que autoriza la política.
+- Tras la ejecución roja, se retiró la línea `informes`; queda pendiente publicar la corrección.
 
 ## Corrección, README y PR
 
